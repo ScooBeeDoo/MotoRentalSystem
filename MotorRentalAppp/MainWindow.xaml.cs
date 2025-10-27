@@ -111,12 +111,7 @@ namespace MotorRentalApp
             MotorbikeWindow mb = new MotorbikeWindow();
             mb.ShowDialog();
         }
-        private void btnOpenMotorbike_Click(object sender, RoutedEventArgs e)
-        {
-            // Mở cửa sổ quản lý xe máy
-            MotorbikeWindow motorbikeWindow = new MotorbikeWindow();
-            motorbikeWindow.ShowDialog();
-        }
+    
 
 
     }
