@@ -1,0 +1,67 @@
+﻿<Window x:Class="MotorRentalApp.MotorbikeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Motorbike Management"
+        Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 🔹 Tiêu đề -->
+        <TextBlock Text="QUẢN LÝ XE MÁY" 
+                   FontSize="22" FontWeight="Bold"
+                   HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+        <!-- 🔹 Khu vực nhập liệu -->
+        <StackPanel Orientation="Vertical" Grid.Row="0" Margin="0,50,0,10">
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Mã xe:" Width="100" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtBikeCode" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Model:" Width="100" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtModel" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Hãng xe:" Width="100" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtBrand" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Tình trạng:" Width="100" VerticalAlignment="Center"/>
+                <ComboBox x:Name="cbStatus" Width="200">
+                    <ComboBoxItem Content="Available" />
+                    <ComboBoxItem Content="Rented" />
+                    <ComboBoxItem Content="Maintenance" />
+                </ComboBox>
+            </StackPanel>
+
+            <!-- 🔹 Nút thao tác -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <Button x:Name="btnAdd" Content="Thêm" Width="100" Margin="5" Click="btnAdd_Click"/>
+                <Button x:Name="btnUpdate" Content="Sửa" Width="100" Margin="5" Click="btnUpdate_Click"/>
+                <Button x:Name="btnDelete" Content="Xóa" Width="100" Margin="5" Click="btnDelete_Click"/>
+                <Button x:Name="btnRefresh" Content="Làm mới" Width="100" Margin="5" Click="btnRefresh_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- 🔹 Bảng dữ liệu -->
+        <DataGrid x:Name="dgMotorbikes" Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionChanged="dgMotorbikes_SelectionChanged">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding BikeId}" Width="50"/>
+                <DataGridTextColumn Header="Mã xe" Binding="{Binding BikeCode}" Width="100"/>
+                <DataGridTextColumn Header="Model" Binding="{Binding Model}" Width="150"/>
+                <DataGridTextColumn Header="Hãng" Binding="{Binding Brand}" Width="150"/>
+                <DataGridTextColumn Header="Tình trạng" Binding="{Binding Status}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
